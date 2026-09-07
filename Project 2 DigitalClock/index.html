@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            margin-top: 100px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .clock {
+            background-color: lightgray;
+            width: 200px;
+            margin: 10px;
+            padding: 1px;
+            border-radius: 5px;
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+            justify-self: center;
+        }
+
+        #country {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+            justify-self: center;
+        }
+
+        .struct {
+            border: 2px solid black;
+            height: 300px;
+            width: 400px;
+            border-radius: 13px;
+            justify-self: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="struct">
+        <h1>Your Country</h1>
+        <select id="country">
+            <option value="val" disabled selected>Select your country</option>
+            <option value="Asia/Karachi">Pakistan</option>
+
+            <option value="Europe/Madrid">Spain</option>
+
+            <option value="America/New_York">America (USA - Eastern Time)</option>
+
+            <option value="Europe/London">England (UK)</option>
+
+            <option value="America/Toronto">Canada (Eastern Time)</option>
+        </select>
+
+        <h1>Your digital Clock</h1>
+        <div class="clock">
+            <h1 id="time">00:00:00</h1>
+        </div>
+    </div>
+
+    <script>
+        let country = document.getElementById("country")
+        let time = document.getElementById("time")
+        let value;
+        country.addEventListener("change", e => {
+            value = country.value;
+            console.log(value);
+            gettime(value)
+            if (value === "val") {
+                alert("select country")
+            } else {
+                setInterval(() => {
+                    gettime(value);
+                }, 1000);
+            }
+
+        })
+
+        async function gettime(value) {
+            try {
+                let response = await fetch(`https://timeapi.io/api/Time/current/zone?timeZone=${value}`)
+                let data = await response.json()
+
+                console.log(data);
+                time.innerHTML = data.hour.toString().padStart(2, "0") + ":" + data.minute.toString().padStart(2, "0") + ":" + data.seconds.toString().padStart(2, "0")
+            } catch (error) {
+                alert("Timezone not availale")
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>>

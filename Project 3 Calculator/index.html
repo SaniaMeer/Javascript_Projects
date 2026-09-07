@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .container {
+            border: 2px solid black;
+            margin: 20px;
+            padding: 20px;
+            justify-self: center;
+            margin-top: 60px;
+            border-radius: 10px;
+
+        }
+
+        .btn {
+            padding: 10px;
+            margin: 0.5px;
+            width: 30px;
+        }
+
+        #buttons {
+            justify-self: center;
+        }
+
+        h1 {
+            justify-self: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Calculator</h1>
+        <div>
+            <input type="text" id="display" readonly>
+        </div><br>
+        <div id="buttons">
+            <button class="btn">(</button>
+            <button class="btn">)</button>
+            <button class="btn">%</button>
+            <button class="btn" id="clear">C</button><br>
+            <button class="btn">0</button>
+            <button class="btn">1</button>
+            <button class="btn">2</button>
+            <button class="btn">+</button><br>
+            <button class="btn">3</button>
+            <button class="btn">4</button>
+            <button class="btn">5</button>
+            <button class="btn">-</button><br>
+            <button class="btn">6</button>
+            <button class="btn">7</button>
+            <button class="btn">8</button>
+            <button class="btn">*</button><br>
+            <button class="btn">.</button>
+            <button class="btn">9</button>
+            <button class="btn" id="equal">=</button>
+            <button class="btn">/</button>
+        </div>
+    </div>
+
+    <script>
+        let buttons = document.getElementById("buttons")
+        let display = document.getElementById("display")
+
+        buttons.addEventListener("click", (e) => {
+            let value = e.target.textContent;
+            if (value === "C") {
+                clearval();
+            } else if (value === "=") {
+                equalto();
+            } else {
+                display.value += value;
+            }
+        })
+
+        function clearval() {
+            display.value = ""
+        }
+
+        function equalto() {
+
+            try {
+                let result = eval(display.value)
+                display.value = result;
+            }
+            catch (error) {
+                alert("wrong input")
+
+                display.value = ""
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

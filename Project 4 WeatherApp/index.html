@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            background-color: lightcyan;
+        }
+
+        #struct {
+
+            background: linear-gradient(to bottom, #74ebd5, #ACB6E5);
+            height: 350px;
+            width: 400px;
+            border-radius: 13px;
+            justify-self: center;
+            padding: 20px;
+            width: 250px;
+            padding-top: 10px;
+            margin-top: 100px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="struct">
+        <h1>Weather App 🌤️</h1>
+        <h2>Select city</h2>
+        <select id="city">
+            <option value="val" disable selected>Select your city in Pakistan</option>
+            <option value="Gujranwala">Gujranwala</option>
+            <option value="Lahore">Lahore</option>
+            <option value="Karachi">Karachi</option>
+            <option value="Islamabad">Islamabad</option>
+            <option value="Faisalabad">Faisalabad</option>
+        </select>
+        <div id="data">
+            <h3 id="display">📍 Weather in </h3>
+            <h4 id="rain">🌦️ Chance of rain :</h4>
+            <h4 id="temp">🌡 Temperature :</h4>
+            <h4 id="humidity">💧 Humidity :</h4>
+        </div>
+    </div>
+    <script>
+        let display = document.getElementById("display")
+        let rain = document.getElementById("rain")
+        let temp = document.getElementById("temp")
+        let humidity = document.getElementById("humidity")
+        let city = document.getElementById("city")
+        let value;
+        city.addEventListener("change", e => {
+            value = city.value;
+            console.log(value)
+            getweather(value);
+        })
+
+        async function getweather(value) {
+            try {
+                let response = await fetch(`https://api.weatherapi.com/v1/current.json?key=e385f412b124465ab1d225642262207&q=${value}`)
+                let data = await response.json()
+                console.log(data)
+                display.innerHTML = `📍 Weather in ${value}`
+                rain.innerHTML = "🌦️ Chance of rain :" + data.current.chance_of_rain + "%"
+                temp.innerHTML = "🌡 Temperature :" + data.current.temp_c + "°C"
+                humidity.innerHTML = "💧 Humidity :" + data.current.humidity + "%"
+            } catch (error) {
+                alert("city not available")
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

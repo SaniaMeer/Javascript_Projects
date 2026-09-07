@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        h1 {
+            justify-self: center;
+        }
+
+        .option {
+            border: 2px solid black;
+            display: flex;
+            width: 150px;
+            height: 50px;
+            margin: 10px;
+            padding: 5px;
+            justify-content: center;
+            align-items: center;
+            font-size: medium;
+        }
+
+        #next {
+            width: 60px;
+            height: 30px;
+            margin: 10px;
+            padding: 5px;
+        }
+
+        body {
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🧠 Javascript Quiz</h1>
+    <h2 id="question"></h2>
+    <button class="option"></button>
+    <button class="option"></button>
+    <button class="option"></button>
+    <button class="option"></button>
+    <button id="next">Next ➜ </button>
+
+    <h1 id="score" hidden></h1>
+
+    <script>
+        let q = document.getElementById("question");
+        let next = document.getElementById("next");
+        let option = document.getElementsByClassName("option")
+        let displayscore = document.getElementById("score");
+        let currentq = 0;
+        let score = 0;
+        let quiz = [
+            {
+                question: "Which keyword is used to declare a block-scoped variable?",
+                options: ["var", "let", "int", "char"],
+                answer: "let"
+            },
+            {
+                question: "Which method adds an element to the end of an array?",
+                options: ["shift()", "pop()", "push()", "unshift()"],
+                answer: "push()"
+            },
+            {
+                question: "What does === check in JavaScript?",
+                options: ["value and data type", "Only value", "Only data type", "variable name"],
+                answer: "value and data type"
+            },
+            {
+                question: "Which function is used to convert a JSON string into a JavaScript object?",
+                options: ["JSON.parse()", "JSON.stringify()", "Object.parse()", "parseJSON()"],
+                answer: "JSON.parse()"
+            },
+            {
+                question: "What does fetch() return?",
+                options: ["string", "array", "promise", "number"],
+                answer: "promise"
+            }
+
+        ];
+        show();
+        function show() {
+            q.textContent = quiz[currentq].question
+            for (let index = 0; index < quiz[currentq].options.length; index++) {
+                option[index].textContent = quiz[currentq].options[index];
+                option[index].style.backgroundColor = ""
+                option[index].style.display = "block";
+                option[index].disabled = false;
+            }
+            next.disabled = true;
+        }
+
+        next.addEventListener("click", e => {
+
+            if (currentq === quiz.length - 1) {
+                displayscore.innerHTML = `🎉 Your score = ${score} / ${quiz.length}`;
+                displayscore.hidden = false
+                q.hidden = true
+                next.hidden = true
+                for (let index = 0; index < option.length; index++) {
+                    option[index].style.display = "none";
+
+                }
+
+            } else {
+                currentq++;
+                show();
+            }
+
+        })
+
+        for (let index = 0; index < quiz[currentq].options.length; index++) {
+            option[index].addEventListener("click", e => {
+                let text = option[index].textContent
+                if (text === quiz[currentq].answer) {
+                    option[index].style.backgroundColor = "green";
+                    score++;
+                    next.disabled = false;
+                } else {
+                    option[index].style.backgroundColor = "red";
+                    next.disabled = false;
+                }
+                for (let index = 0; index < option.length; index++) {
+                    option[index].disabled = true
+
+                }
+            })
+
+
+        }
+
+    </script>
+</body>
+
+</html>
