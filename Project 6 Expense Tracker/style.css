@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    padding: 40px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.summary div {
+    flex: 1;
+    padding: 15px;
+    background: #f4f4f4;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.summary p {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.form-section {
+    margin-bottom: 30px;
+}
+
+.form-section h2,
+.transactions h2 {
+    margin-bottom: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input,
+select,
+button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: #222;
+    color: white;
+    border-radius: 5px;
+}
+
+.transactions ul {
+    list-style: none;
+}
+
+.transactions li {
+    padding: 12px;
+    margin-bottom: 10px;
+    background: #f4f4f4;
+    border-radius: 5px;
+}
