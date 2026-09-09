@@ -82,9 +82,9 @@ A simple expense tracking application for recording income and expenses and calc
 
 ## Technologies Used
 
-* HTML5
-* CSS3
-* JavaScript (ES6+)
+* HTML
+* CSS
+* JavaScript 
 
 ## Purpose
 
