@@ -52,4 +52,6 @@ let button = document.getElementById('btn')
 button.addEventListener('click', (e) => {
     e.preventDefault();
     createTransaction();
+    descrp.value = "";
+    amt.value = "";
 })
