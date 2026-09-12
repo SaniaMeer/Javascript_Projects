@@ -80,6 +80,21 @@ A simple expense tracking application for recording income and expenses and calc
 * Form Handling
 * Array Methods
 
+### 7. Movie Search App
+
+A movie search application that uses the OMDb API to search for movies and display their details dynamically.
+
+**Concepts practiced:**
+
+* API Integration
+* Fetch API
+* Async/Await
+* DOM Manipulation
+* Event Handling
+* JSON Data
+* Dynamic Data Display
+
+
 ## Technologies Used
 
 * HTML
@@ -100,6 +115,7 @@ Each project focuses on applying different concepts and gradually building confi
 * [x] Weather App
 * [x] Quiz App
 * [x] Expense Tracker
+* [x] Movie Search App
 * [ ] More JavaScript projects coming soon
 
 ## Author
