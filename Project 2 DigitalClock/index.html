@@ -94,7 +94,7 @@
                 console.log(data);
                 time.innerHTML = data.hour.toString().padStart(2, "0") + ":" + data.minute.toString().padStart(2, "0") + ":" + data.seconds.toString().padStart(2, "0")
             } catch (error) {
-                alert("Timezone not availale")
+                console.log("Timezone not availale")
             }
 
         }
